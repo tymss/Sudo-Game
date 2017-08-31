@@ -11,6 +11,7 @@ Widget::Widget(QWidget *parent) :
     setFixedSize(600,800);
     chosen.setX(0);
     chosen.setY(0);
+    isstop=0;
     for(int i=0;i<9;i++)
         for(int j=0;j<9;j++)
             have_flag[i][j]=0;
@@ -181,6 +182,8 @@ void Widget::paintEvent(QPaintEvent *event)
     {
         paint->drawLine(QPoint(30,80+60*i),QPoint(570,80+60*i));
     }
+    if(isstop)
+        return;
     if(chosen!=QPoint(0,0))
     {
         int xx=chosen.x();
@@ -336,9 +339,17 @@ void Widget::showtime(QTime t)
 void Widget::change()
 {
     if(stop->text()=="暂停")
+    {
         stop->setText("开始");
+        isstop=1;
+        repaint();
+    }
     else
+    {
         stop->setText("暂停");
+        isstop=0;
+        repaint();
+    }
 }
 
 void Widget::win()

@@ -34,6 +34,7 @@ private:
     selectdlg* dlg;
     QPushButton *remind;
     bool have_flag[9][9];
+    bool isstop;
 private slots:
     void to_deal(int ope);
     void redisplay();  //刷新界面
