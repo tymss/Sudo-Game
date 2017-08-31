@@ -323,7 +323,8 @@ void Widget::mousePressEvent(QMouseEvent *event)
 
 void Widget::to_deal(int ope)
 {
-    emit dealing(chosen.x(),chosen.y(),ope);
+    if(chosen!=QPoint(0,0))
+        emit dealing(chosen.x(),chosen.y(),ope);
 }
 
 void Widget::redisplay()
